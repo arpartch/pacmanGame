@@ -1,3 +1,13 @@
+var score = 0;
+var gscore = 0;
+var player = {
+    x:50,
+    y:100,
+    pacmouth:320,
+    pacdir:0,
+    psize:32
+}
+
 
 var canvas = document.createElement("canvas"); 
 var context = canvas.getContext("2d");
@@ -7,6 +17,20 @@ mainImage = new Image();
 mainImage.ready = false;
 mainImage.onload = checkReady;
 mainImage.src = "pac.png";
+
+
+var keyclick = {};
+document.addEventListener("keydown", function (event) {
+    keyclick[event.KeyCode]=true;
+    move(keyclick)
+},false); 
+document.addEventListener("keyup", function (event) {
+    delete keyclick[event.KeyCode];
+},false); 
+function move(keyclick) {
+    player.x++;
+    render();
+}
 
 function checkReady() {
     this.ready = true;
@@ -20,7 +44,10 @@ function playgame() {
 function render() {
     context.fillStyle = "black";
     context.fillRect(0,0,canvas.width,canvas.height);
-    context.drawImage(mainImage, 320,0,32,32,50,50,32,32);
+    context.drawImage(mainImage,player.pacmouth,player.pacdir,32,32,player.x,player.y,32,32);
+    context.font = "20px Verdana";
+    context.fillStyle = "white";
+    context.fillText("Pacman: "+score+" vs "+gscore, 2,18);
 }
 
 
