@@ -20,8 +20,9 @@ function playgame() {
 function render() {
     context.fillStyle = "black";
     context.fillRect(0,0,canvas.width,canvas.height);
+    context.drawImage(mainImage, 320,0,32,32,50,50,32,32);
 }
 
 
 document.body.appendChild(canvas); 
-ctx.fillText("helloworld", 10, 150);
+// ctx.fillText("helloworld", 10, 150);
