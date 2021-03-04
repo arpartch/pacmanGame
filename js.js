@@ -5,7 +5,8 @@ var player = {
     y:100,
     pacmouth:320,
     pacdir:0,
-    psize:32
+    psize:32,
+    speed:5
 }
 
 
@@ -24,9 +25,11 @@ document.addEventListener("keydown", function (event) {
     keyclick[event.KeyCode]=true;
     move(keyclick)
 },false); 
+
 document.addEventListener("keyup", function (event) {
     delete keyclick[event.KeyCode];
 },false); 
+
 function move(keyclick) {
     player.x++;
     render();
